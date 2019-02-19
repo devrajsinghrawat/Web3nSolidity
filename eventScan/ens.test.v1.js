@@ -3,8 +3,12 @@ const fs = require('fs');
 const path = require("path");
 
 async function startApp() {
+  
+  // Both HTTP and Websocket should work
   const provider = 'wss://mainnet.infura.io/ws';
   const web3 = await new Web3(new Web3.providers.WebsocketProvider(provider));
+  
+ // const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/<API - Key>'));
 
   const __dirname = '../build/contracts/';
   let contractAbi = fs.readFileSync(path.resolve(__dirname, "ens.json"));
